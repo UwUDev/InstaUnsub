@@ -18,7 +18,7 @@ Make sure you have Java 8 or higher before starting
 
 ## Running
 
-First download the lastest release [Here](https://github.com/UwU0001/InstaUnsub/releases/latest/download/InstaUnsub.zip)
+First download the lastest release [Here](https://github.com/UwUDev/InstaUnsub/releases/latest/download/InstaUnsub.zip)
 
 Unzip the files to get this result
 
