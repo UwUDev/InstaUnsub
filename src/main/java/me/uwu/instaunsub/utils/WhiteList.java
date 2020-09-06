@@ -11,4 +11,17 @@ public class WhiteList {
         return brTest.readLine();
     }
 
+    public static int getQuantity() throws IOException {
+        String input = WhiteList.getWhiteList();
+
+        int index = input.indexOf("@");
+        int count = 0;
+        while (index != -1) {
+            count++;
+            input = input.substring(index + 1);
+            index = input.indexOf("@");
+        }
+       return count;
+    }
+
 }

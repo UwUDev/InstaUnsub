@@ -29,7 +29,7 @@ public class Main {
         System.out.println("Enter password : ");
         pass = sc.nextLine();
 
-        System.out.println("Loaded whitelist : " + WhiteList.getWhiteList());
+        System.out.println("Loaded whitelist (" + WhiteList.getQuantity() + " accounts) : " + WhiteList.getWhiteList());
 
         Instagram4j instagram = Instagram4j.builder().username(user).password(pass).build();
         instagram.setup();
@@ -37,9 +37,9 @@ public class Main {
 
         InstagramSearchUsernameResult userResult = instagram.sendRequest(new InstagramSearchUsernameRequest(instagram.getUsername()));
 
-        baseValue = userResult.getUser().following_count;
+        baseValue = userResult.getUser().following_count - WhiteList.getQuantity();
 
-        System.out.println(baseValue);
+        System.out.println(baseValue + "accounts to unfollow.");
 
         InstagramGetUserFollowersResult followers = instagram.sendRequest(new InstagramGetUserFollowingRequest(userResult.getUser().getPk()));
         List<InstagramUserSummary> users = followers.getUsers();
@@ -49,13 +49,10 @@ public class Main {
                 instagram.sendRequest(new InstagramUnfollowRequest(user.getPk()));
                 Thread.sleep(32000);
                 InstagramSearchUsernameResult count = instagram.sendRequest(new InstagramSearchUsernameRequest(instagram.getUsername()));
-                float percent = 100 - (((float) count.getUser().following_count / (float) baseValue) * 100);
-                System.out.println(count.getUser().following_count + " remaining (" + percent + "%)    about " + (count.getUser().following_count * 32.5) + "s left.");
+                float percent = 100 - (((float) count.getUser().following_count - WhiteList.getQuantity() / (float) baseValue) * 100);
+                System.out.println(count.getUser().following_count - WhiteList.getQuantity() + " remaining (" + percent + "%)    about " + (count.getUser().following_count - WhiteList.getQuantity() * 32.5) + "s left.");
             } else {
               System.out.println("Not unfollowing @" + user.getUsername() + " beacause he is whitelisted, lucky day for him :)");
-                InstagramSearchUsernameResult count = instagram.sendRequest(new InstagramSearchUsernameRequest(instagram.getUsername()));
-                float percent = 100 - (((float) count.getUser().following_count / (float) baseValue) * 100);
-                System.out.println(count.getUser().following_count + " remaining (" + percent + "%)    about " + (count.getUser().following_count * 32.5) + "s left.");
             }
         }
     }
