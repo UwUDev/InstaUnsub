@@ -32,6 +32,5 @@ ping 192.0.2.1 -n 1 -w 700 >nul
 cls
 TITLE InstaUnsub by UwU#0001
 color b
-cd core
 java -jar InstaUnsub.jar
 pause
