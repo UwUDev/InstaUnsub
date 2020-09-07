@@ -49,8 +49,8 @@ public class Main {
                 instagram.sendRequest(new InstagramUnfollowRequest(user.getPk()));
                 Thread.sleep(32000);
                 InstagramSearchUsernameResult count = instagram.sendRequest(new InstagramSearchUsernameRequest(instagram.getUsername()));
-                float percent = 100 - (((float) count.getUser().following_count - WhiteList.getQuantity() / (float) baseValue) * 100);
-                System.out.println(count.getUser().following_count - WhiteList.getQuantity() + " remaining (" + percent + "%)    about " + (count.getUser().following_count - WhiteList.getQuantity() * 32.5) + "s left.");
+                float percent = 100 - (((float) count.getUser().following_count / (float) baseValue) * 100);
+                System.out.println(count.getUser().following_count + " remaining (" + percent + "%)    about " + (count.getUser().following_count * 32.5) + "s left.");
             } else {
               System.out.println("Not unfollowing @" + user.getUsername() + " beacause he is whitelisted, lucky day for him :)");
             }
