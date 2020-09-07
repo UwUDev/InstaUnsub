@@ -35,11 +35,11 @@ And just run `start.bat`
 
 ## Built With
 
-* [Instagram4j](https://www.selenium.dev/) - Used to control chrome
+* [Instagram4j](https://github.com/instagram4j/instagram4j) - Lib for connecting to instagram and spoofing android device
 
 ## Author
 
-* **UwU#0001** - [GitHub](https://github.com/instagram4j/instagram4j1)
+* **UwU#0001** - [GitHub](https://github.com/UwUDev
 
 ## Contact
 [![Discord](https://discordapp.com/api/guilds/606205735352795146/widget.png)](https://discord.gg/duyyyz3)
